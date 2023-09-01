@@ -47,6 +47,15 @@ jobs:
       - name: Docker Build
         run: |
           docker images | grep spring-multi-module
+          docker tag 7d820823f33c jtabilo0811/springboot-servicea
+          docker tag c46339799598 jtabilo0811/springboot-serviceb
+          docker tag 61e555bbcb7b jtabilo0811/springboot-servicec
+
+          docker push jtabilo0811/spring-multi-module-service-service-a
+          docker push jtabilo0811/spring-multi-module-service-service-b
+          docker push jtabilo0811/spring-multi-module-service-service-c
+
+          java -jar service-a\target\service-a-0.0.1-SNAPSHOT.jar
 
 
       
