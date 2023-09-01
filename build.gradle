@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'org.sonarqube' version "4.2.1.3168"
 }
 
 repositories {
@@ -53,4 +54,12 @@ bootJar {
 
 bootBuildImage{
 	enabled = false
+}
+
+sonar {
+	properties {
+		property "sonar.projectKey", "juliotabilo_article_dec_28_mavengradle-based-multi-module-spring-boot-microservices"
+		property "sonar.organization", "juliotabilo"
+		property "sonar.host.url", "https://sonarqube.io"
+	}
 }
