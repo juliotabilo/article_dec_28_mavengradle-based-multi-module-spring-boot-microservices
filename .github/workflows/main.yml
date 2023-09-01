@@ -28,15 +28,25 @@ jobs:
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle
+          restore-keys: ${{ runner.os }}-gradle 
+ 
+      - name: Build with Gradle
+        run: gradle clean test
+       
+      - name: Archive Rest Results
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: test-results
+          path: GradleReports/emailable-report.html
           
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          #chmod +x gradlew
-          #./gradlew build bootBuildImage #sonar --info
+          chmod +x gradlew
+          ./gradlew build bootBuildImage #sonar --info
 
       - name: Docker Login
         uses: docker/login-action@v2.2.0
