@@ -14,5 +14,4 @@ jobs:
       - name: Descarga Codigo
         run: ls -ltr
 
-      - name: Build Gradle
-        uses: gradle/gradle-build-action@2.7.0
+      
