@@ -55,6 +55,10 @@ jobs:
           docker push jtabilo0811/springboot-serviceb
           docker push jtabilo0811/springboot-servicec 
 
+          docker run -d -p 8081:8080 -e spring.profiles.active=prod -e serviceb.url=http://localhost:8082 -e servicec.url=http://localhost:8083 jtabilo0811/springboot-servicea:latest
+          docker run -d -p 8082:8080 -e spring.profiles.active=prod jtabilo0811/springboot-serviceb:latest
+          docker run -d -p 8083:8080 -e spring.profiles.active=prod jtabilo0811/springboot-servicec:latest
+          
           curl http://localhost:8082/greeting
       
 
