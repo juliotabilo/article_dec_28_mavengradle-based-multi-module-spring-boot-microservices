@@ -59,7 +59,7 @@ jobs:
           docker run -d -p 8082:8080 -e spring.profiles.active=prod jtabilo0811/springboot-serviceb:latest
           docker run -d -p 8083:8080 -e spring.profiles.active=prod jtabilo0811/springboot-servicec:latest
           
-          curl http://localhost:8082/greeting
+          docker ps -a
       
 
               
