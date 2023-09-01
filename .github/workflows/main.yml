@@ -36,7 +36,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           chmod +x gradlew
-          ./gradlew build bootBuildImage sonar --info
+          ./gradlew build bootBuildImage #sonar --info
 
       - name: Docker Login
         uses: docker/login-action@v2.2.0
@@ -51,9 +51,9 @@ jobs:
           docker tag c46339799598 jtabilo0811/springboot-serviceb
           docker tag 61e555bbcb7b jtabilo0811/springboot-servicec
 
-          docker push jtabilo0811/spring-multi-module-service-service-a
-          docker push jtabilo0811/spring-multi-module-service-service-b
-          docker push jtabilo0811/spring-multi-module-service-service-c
+          docker push jtabilo0811/springboot-servicea
+          docker push jtabilo0811/springboot-serviceb
+          docker push jtabilo0811/springboot-servicec
 
           java -jar service-a\target\service-a-0.0.1-SNAPSHOT.jar
 
