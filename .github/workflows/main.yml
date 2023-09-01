@@ -34,4 +34,19 @@ jobs:
           chmod +x gradlew
           ./gradlew build sonar --info
 
+      - name: Docker Login
+        uses: docker/login-action@2.2.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} 
+          password: ${{ secrets.DOCKER_PASSWORD }} 
+
+      - name: Docker Build
+        run: |
+          docker run -d -p 8081:8080 -e spring.profiles.active=prod -e serviceb.url=http://localhost:8082 -e servicec.url=http://localhost:8083 narramadan/spring-multi-module-service-service-a
+          docker run -d -p 8082:8080 -e spring.profiles.active=prod narramadan/spring-multi-module-service-service-b
+          docker run -d -p 8083:8080 -e spring.profiles.active=prod narramadan/spring-multi-module-service-service-c
+
+
+      
+
               
