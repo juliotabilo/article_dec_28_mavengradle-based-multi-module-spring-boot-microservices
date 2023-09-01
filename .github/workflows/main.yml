@@ -53,7 +53,7 @@ jobs:
 
           docker push jtabilo0811/springboot-servicea
           docker push jtabilo0811/springboot-serviceb
-          docker push jtabilo0811/springboot-servicec
+          docker push jtabilo0811/springboot-servicec 
 
 
       
