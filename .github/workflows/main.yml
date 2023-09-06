@@ -23,12 +23,12 @@ jobs:
        #  key: ${{ runner.os }}-sonar
         #  restore-keys: ${{ runner.os }}-sonar
           
-      - name: Cache Gradle packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle 
+      #- name: Cache Gradle packages
+       # uses: actions/cache@v3
+        #with:
+         # path: ~/.gradle/caches
+          #key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          #restore-keys: ${{ runner.os }}-gradle 
           
       - name: Build 
         run: |
@@ -48,6 +48,7 @@ jobs:
           java -jar $GITHUB_WORKSPACE/service-a/build/libs/service-a-0.0.1-SNAPSHOT.jar &
           java -jar $GITHUB_WORKSPACE/service-b/build/libs/service-b-0.0.1-SNAPSHOT.jar &
           java -jar $GITHUB_WORKSPACE/service-c/build/libs/service-c-0.0.1-SNAPSHOT.jar &
+          sleep (5) 
 
       - name: Prueba JAR's compilados
         run: |
