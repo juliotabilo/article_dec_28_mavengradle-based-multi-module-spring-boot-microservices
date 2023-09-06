@@ -1,0 +1,35 @@
+{
+	"info": {
+		"_postman_id": "75dbb414-e02f-4bdc-938d-8ce822e00662",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29483193",
+		"_collection_link": "https://www.postman.com/satellite-architect-50690472/workspace/pruebastareafinal/collection/29483193-75dbb414-e02f-4bdc-938d-8ce822e00662?action=share&source=collection_link&creator=29483193"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
