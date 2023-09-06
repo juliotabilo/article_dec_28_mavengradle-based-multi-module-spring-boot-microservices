@@ -48,7 +48,14 @@ jobs:
           java -jar $GITHUB_WORKSPACE/service-a/build/libs/service-a-0.0.1-SNAPSHOT.jar &
           java -jar $GITHUB_WORKSPACE/service-b/build/libs/service-b-0.0.1-SNAPSHOT.jar &
           java -jar $GITHUB_WORKSPACE/service-c/build/libs/service-c-0.0.1-SNAPSHOT.jar &
-          sleep (5) 
+
+      - name: Wait / Sleep
+        # You may pin to the exact commit or the version.
+        # uses: jakejarvis/wait-action@919fc193e07906705e5b7a50f90ea9e74d20b2b0
+        uses: jakejarvis/wait-action@v0.1.1
+        with:
+          # Follows the Linux sleep syntax for time units: a number followed by s for seconds, m for minutes, etc
+          time: 5s
 
       - name: Prueba JAR's compilados
         run: |
