@@ -33,7 +33,7 @@ jobs:
       - name: Build 
         run: |
           chmod +x gradlew
-          ./gradlew clean :service-a:build :service-a:bootBuildImage
+          ./gradlew clean build bootBuildImage
 
       - name: Verificar creacion compilado JAR
         run: |
