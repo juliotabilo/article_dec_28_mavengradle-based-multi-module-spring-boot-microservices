@@ -68,10 +68,10 @@ jobs:
         with:
           testFilePath: 'tarea.jmx'
           
-      #- name: Postman
-      #  uses: matt-ball/newman-action@master
-       # with:
-        #  collection: Demo-My.postman_collection.json
+      - name: Postman
+        uses: matt-ball/newman-action@master
+        with:
+          collection: Demo-My.postman_collection.json
 
 
      
