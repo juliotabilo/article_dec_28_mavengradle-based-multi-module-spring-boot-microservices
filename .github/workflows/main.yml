@@ -57,7 +57,7 @@ jobs:
           # Follows the Linux sleep syntax for time units: a number followed by s for seconds, m for minutes, etc
           time: 5s
 
-      
+      - name: Prueba JAR's compilados
         run: |
           curl 127.0.0.1:8081/greeting || true
           curl 127.0.0.1:8082/greeting || true
@@ -67,7 +67,8 @@ jobs:
         uses: rbhadti94/apache-jmeter-action@v0.7.0
         with:
           testFilePath: 'tarea.jmx'
-      - name: Prueba JAR's compilados
+          
+      - name: Postman
         uses: matt-ball/newman-action@master
         with:
           collection: Demo-My.postman_collection.json
