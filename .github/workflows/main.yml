@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-java@v3.12.0
         with:
           java-version: '11'
-          distribution: 'temurin' 
+          distribution: 'zulu' 
           
      # - name: Cache SonarCloud packages
      #   uses: actions/cache@v3
@@ -35,6 +35,11 @@ jobs:
           chmod +x gradlew
           ./gradlew clean build bootBuildImage
 
+      - name: Test Path
+        run: |
+            ls -lt 
+            ls -lt $GITHUB_WORKSPACE/
+
       - name: Verificar creacion compilado JAR
         run: |
             ls -lt 
@@ -49,10 +54,10 @@ jobs:
           java -jar $GITHUB_WORKSPACE/service-b/build/libs/service-b-0.0.1-SNAPSHOT.jar &
           java -jar $GITHUB_WORKSPACE/service-c/build/libs/service-c-0.0.1-SNAPSHOT.jar &
 
-      - name: Wait / Sleep
+      - name: Sleep para asegurar que los Server levanten
         uses: jakejarvis/wait-action@v0.1.1
         with:
-          time: 5s
+          time: 10s
 
       - name: Prueba JAR's compilados
         run: |
@@ -64,11 +69,22 @@ jobs:
         uses: rbhadti94/apache-jmeter-action@v0.7.0
         with:
           testFilePath: 'tarea.jmx'
+          outputReportsFolder: 'jmreport'
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: jmeter-test-results
+          path: jmreport/
           
       - name: Postman
         uses: matt-ball/newman-action@master
         with:
           collection: Demo-My.postman_collection.json
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: postman-test-results
+          path: newman/
 
       
 
