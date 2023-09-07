@@ -10,11 +10,22 @@
 			"name": "Service B",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/greeting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"greeting"
+					]
+				}
 			},
 			"response": [
 				{
-					"name": "New Request",
+					"name": "Service B",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
@@ -44,7 +55,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 07 Sep 2023 00:28:47 GMT"
+							"value": "Thu, 07 Sep 2023 00:49:23 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -56,7 +67,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": 18,\n    \"content\": \"Service-B - Hello, World!\"\n}"
+					"body": "{\n    \"id\": 23,\n    \"content\": \"Service-B - Hello, World!\"\n}"
 				}
 			]
 		},
@@ -66,12 +77,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/greeting",
+					"raw": "http://localhost:8083/greeting",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8082",
+					"port": "8083",
 					"path": [
 						"greeting"
 					]
@@ -79,16 +90,10 @@
 			},
 			"response": [
 				{
-					"name": "New Request",
+					"name": "Service C",
 					"originalRequest": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "http://localhost:8083/greeting",
 							"protocol": "http",
@@ -115,7 +120,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 07 Sep 2023 00:28:23 GMT"
+							"value": "Thu, 07 Sep 2023 00:51:40 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -127,7 +132,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": 10,\n    \"content\": \"Service-C - Hello, World!\"\n}"
+					"body": "{\n    \"id\": 14,\n    \"content\": \"Service-C - Hello, World!\"\n}"
 				}
 			]
 		}
