@@ -50,11 +50,8 @@ jobs:
           java -jar $GITHUB_WORKSPACE/service-c/build/libs/service-c-0.0.1-SNAPSHOT.jar &
 
       - name: Wait / Sleep
-        # You may pin to the exact commit or the version.
-        # uses: jakejarvis/wait-action@919fc193e07906705e5b7a50f90ea9e74d20b2b0
         uses: jakejarvis/wait-action@v0.1.1
         with:
-          # Follows the Linux sleep syntax for time units: a number followed by s for seconds, m for minutes, etc
           time: 5s
 
       - name: Prueba JAR's compilados
@@ -73,30 +70,6 @@ jobs:
         with:
           collection: Demo-My.postman_collection.json
 
-
-     
-     # - name: Docker Login
-     #  uses: docker/login-action@v2.2.0
-     #   with:
-     #     username: ${{ secrets.DOCKER_USERNAME }} 
-     #     password: ${{ secrets.DOCKER_PASSWORD }} 
-
-      #- name: Docker Build
-       # run: |
-        #  docker images | grep spring-multi-module
-        #  docker tag 7d820823f33c jtabilo0811/springboot-servicea
-        #  docker tag c46339799598 jtabilo0811/springboot-serviceb
-        #  docker tag 61e555bbcb7b jtabilo0811/springboot-servicec
-
-        #  docker push jtabilo0811/springboot-servicea
-        #  docker push jtabilo0811/springboot-serviceb
-        #  docker push jtabilo0811/springboot-servicec 
-
-        #  docker run -d -p 8081:8080 -e spring.profiles.active=prod -e serviceb.url=http://localhost:8082 -e servicec.url=http://localhost:8083 jtabilo0811/springboot-servicea:latest
-        #  docker run -d -p 8082:8080 -e spring.profiles.active=prod jtabilo0811/springboot-serviceb:latest
-        #  docker run -d -p 8083:8080 -e spring.profiles.active=prod jtabilo0811/springboot-servicec:latest
-          
-        # docker ps -a
       
 
               
