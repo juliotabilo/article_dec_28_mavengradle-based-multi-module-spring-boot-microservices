@@ -89,14 +89,10 @@ jobs:
           wget -q --no-check-certificate https://jmeter-plugins.org/files/packages/jpgc-dummy-0.4.zip  -P .
           unzip -o jpgc-dummy-0.4.zip  && rm jpgc-dummy-0.4.zip
           
-      - name: Ejecutar scripts jmx 
-        run: |
-         cd $GITHUB_WORKSPACE
-         for i in $( ls -A1 *.jmx); do
-            cd $GITHUB_WORKSPACE/apache-jmeter-5.5/bin
-            mkdir $GITHUB_WORKSPACE/test_report/${i%.jmx}
-            ./jmeter -n -t $GITHUB_WORKSPACE/$i  -l $GITHUB_WORKSPACE/${i%.jmx}.jtl -e -o $GITHUB_WORKSPACE/test_report/${i%.jmx}
-         done
+      - name: Apache JMeter
+        uses: rbhadti94/apache-jmeter-action@v0.7.0
+        with:
+          testFilePath: 'tarea.jmx'
           
       # Artefacto de resultados de Jmeter disponibilizados
       - name: Upload JMeter Test Results
@@ -117,6 +113,24 @@ jobs:
         with:
           name: postman-test-results
           path: newman/
+
+      #Login con credenciales Docker Hub
+      - name: Docker Login
+        uses: docker/login-action@v2.2.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} 
+          password: ${{ secrets.DOCKER_PASSWORD }} 
+
+      #Pushear imagenes docker a mi Docker Hub Personal
+      - name: Docker Build
+        run: |
+          docker images | grep spring-multi-module
+          docker tag 7d820823f33c jtabilo0811/springboot-servicea
+          docker tag c46339799598 jtabilo0811/springboot-serviceb
+          docker tag 61e555bbcb7b jtabilo0811/springboot-servicec
+          docker push jtabilo0811/springboot-servicea
+          docker push jtabilo0811/springboot-serviceb
+          docker push jtabilo0811/springboot-servicec
       
 
               
